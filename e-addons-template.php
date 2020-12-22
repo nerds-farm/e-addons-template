@@ -6,7 +6,7 @@
  * Plugin Name:       e-addons TEMPLATE
  * Plugin URI:        https://e-addons.com
  * Description:       Take advantage of Elementor templates dynamically
- * Version:           1.1.1
+ * Version:           1.1.2
  * Author:            Nerds Farm
  * Author URI:        https://nerds.farm
  * Text Domain:       e-addons-template
