@@ -86,7 +86,7 @@ class Portfolio_Template extends Base_Skin {
 
     public function render_post() {
         $settings = $this->parent->get_settings_for_display();
-        $this->render_post_header(false);                        
+        $this->render_post_header();                        
         if (!empty($settings['template_id'])) {
             $args = array(
                 'post_id' => get_the_ID(),
@@ -101,7 +101,7 @@ class Portfolio_Template extends Base_Skin {
         $this->render_title();
         // $this->render_categories_names();
         $this->render_overlay_footer(true);
-        $this->render_post_footer(false);
+        $this->render_post_footer();
     }
 
     public function render() {
