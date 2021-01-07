@@ -246,7 +246,7 @@ class Posts_Template extends Base_Skin {
                     'size_units' => ['%'],
                     'range' => [
                         '%' => [
-                            'min' => 0,
+                            'min' => 30,
                             'max' => 100,
                         ],
                     ],
@@ -268,19 +268,19 @@ class Posts_Template extends Base_Skin {
                     'options' => [
                         'flex-start' => [
                             'title' => __('Left', 'elementor-pro'),
-                            'icon' => 'eicon-text-align-left',
+                            'icon' => 'eicon-h-align-left',
                         ],
                         'center' => [
                             'title' => __('Center', 'elementor-pro'),
-                            'icon' => 'eicon-text-align-center',
+                            'icon' => 'eicon-h-align-center',
                         ],
                         'flex-end' => [
                             'title' => __('Right', 'elementor-pro'),
-                            'icon' => 'eicon-text-align-right',
+                            'icon' => 'eicon-h-align-right',
                         ],
                     ],
                     'condition' => [                        
-                        $this->get_control_id('box_element_width[size]!') => 100,
+                        $this->get_control_id('box_element_width[size]!') => ['',100],
                     ],
                     'selectors' => [
                         '{{WRAPPER}} .elementor-post' => 'justify-content: {{VALUE}}',
