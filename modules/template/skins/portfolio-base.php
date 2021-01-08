@@ -44,6 +44,14 @@ class Portfolio_Base extends Base_Skin {
         return __('Portfolio', 'e-addons');
     }
     
+    public function get_label() {
+        return __('Portfolio Classic', 'e-addons');
+    }
+    
+    public function show_in_settings() {
+        return false;
+    }
+    
     public function remove_controls(Widget_Base $widget) { 
         
         //$widget->remove_control('masonry');

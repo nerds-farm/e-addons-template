@@ -4,7 +4,7 @@ Donate link: https://e-addons.com/donate/
 Tags: elementor, addons, extension, dynamic, template, single, archive, design, ajax
 Requires at least: 5.0
 Tested up to: 5.5.1
-Stable tag: 1.1.2
+Stable tag: 1.2
 Requires PHP: 7.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -17,6 +17,11 @@ Incorporate your fabulous custom Elementor Templates everywhere.
 Be free to create dynamic Templates and use them as sub templates inside your pages.
 
 == Changelog ==
+
+= 1.2 =
+* Add: Box Style in Template Skin
+* Add: Remove Overlay in Portfolio
+* Fix: minor fixes
 
 = 1.1.2 =
 * Fix: Compatibility with Elementor 3.1.0

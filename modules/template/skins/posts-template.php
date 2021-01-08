@@ -53,6 +53,10 @@ class Posts_Template extends Base_Skin {
     public function get_title() {
         return __('Template', 'e-addons');
     }
+    
+    public function get_label() {
+        return __('Posts Template', 'e-addons');
+    }
 
     public function register_controls(Widget_Base $widget) {
         $this->parent = $widget;

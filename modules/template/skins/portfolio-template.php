@@ -29,6 +29,8 @@ class Portfolio_Template extends Base_Skin {
         //parent::_register_controls_actions();
         add_action('elementor/element/portfolio/section_layout/before_section_end', [$this, 'register_controls']);
         add_action('elementor/element/portfolio/section_design_overlay/after_section_end', [$this, 'register_style_sections']);
+        
+        //add_action('elementor/element/portfolio/section_design_overlay/before_section_start', [ $this, 'add_section_condition' ], 10, 2);
     }
 
     public function get_id() {
@@ -45,6 +47,10 @@ class Portfolio_Template extends Base_Skin {
 
     public function get_title() {
         return __('Template', 'e-addons');
+    }
+    
+    public function get_label() {
+        return __('Portfolio Template', 'e-addons');
     }
 
     public function register_controls(Widget_Base $widget) {
@@ -66,7 +72,17 @@ class Portfolio_Template extends Base_Skin {
                     'label_block' => true,
                     'query_type' => 'posts',
                     'object_type' => 'elementor_library',
-                    'separator' => 'after',
+                    'separator' => 'before',
+                ]
+        );
+        $this->add_control(
+                'no_overlay',
+                [
+                    'label' => __('Remove Overlay', 'e-addons'),
+                    'type' => Controls_Manager::SWITCHER,
+                    /*'selectors' => [
+                        '{{WRAPPER}} .elementor-post__thumbnail__link' => 'display: none;',
+                    ],*/
                 ]
         );
 
@@ -74,7 +90,27 @@ class Portfolio_Template extends Base_Skin {
           if ($widget->get_name() == 'posts') {
           $this->register_post_count_control();
           } */
+        
+        $show_title = $widget->get_controls('show_title');
+        $show_title['condition']['template_no_overlay'] = '';
+        $widget->update_control('show_title', $show_title);
+        
+        $title_tag = $widget->get_controls('title_tag');
+        $title_tag['condition']['template_no_overlay'] = '';
+        $widget->update_control('title_tag', $title_tag);
+        
+        $item_ratio = $widget->get_controls('item_ratio');
+        $item_ratio['condition']['_skin'] = 'default';
+        $widget->update_control('item_ratio', $item_ratio);
+        
+        //$section_design_overlay = $widget->get_controls('section_design_overlay');
+        //var_dump($section_design_overlay); die();
+        
     }
+    public function add_section_condition(Widget_Base $widget, $args) {
+        
+    }
+    
 
     public function register_style_sections(Widget_Base $widget) {
         $this->parent = $widget;
@@ -97,10 +133,12 @@ class Portfolio_Template extends Base_Skin {
         } else {
             $this->render_thumbnail();
         }
-        $this->render_overlay_header(true);
-        $this->render_title();
-        // $this->render_categories_names();
-        $this->render_overlay_footer(true);
+        if (empty($settings['template_no_overlay'])) {
+            $this->render_overlay_header(true);
+            $this->render_title();
+            // $this->render_categories_names();
+            $this->render_overlay_footer();
+        }
         $this->render_post_footer();
     }
 
