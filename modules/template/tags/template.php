@@ -140,8 +140,8 @@ class Template extends Base_Tag {
                 $args['author_id'] = $settings['e_template_author_id'];
             }
 
-            if (!empty($settings['template_id'])) {               
-                $template = \EAddonsForElementor\Core\Managers\Template::e_template($settings['template_id'], $args);
+            if (!empty($settings['e_template'])) {               
+                $template = \EAddonsForElementor\Core\Managers\Template::e_template($settings['e_template'], $args);
                 echo Utils::get_dynamic_data($template);
             }
         }                
