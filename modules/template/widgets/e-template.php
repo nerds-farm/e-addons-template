@@ -75,6 +75,18 @@ class E_Template extends Base_Widget {
                 'query_type' => 'posts',
             ]
         );
+        
+        $this->add_control(
+            'term_id',
+            [
+                'label' => __('Select other Term', 'e-addons'),
+                'type' => 'e-query',
+                'placeholder' => __('Term Title', 'e-addons'),
+                'label_block' => true,
+                'query_type' => 'terms',
+            ]
+        );
+        
         $this->add_control(
                 'user_id',
                 [
@@ -133,6 +145,9 @@ class E_Template extends Base_Widget {
         }
         if (!empty($settings['author_id'])) {
             $args['author_id'] = $settings['author_id'];
+        }
+        if (!empty($settings['term_id'])) {
+            $args['term_id'] = $settings['term_id'];
         }
         
         if (!empty($settings['ajax'])) {
